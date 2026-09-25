@@ -1,6 +1,6 @@
 from datetime import datetime
-import mariadb
-import sys
+import mariadb #type: ignore
+import sys 
 
 current_time = datetime.now()
 
