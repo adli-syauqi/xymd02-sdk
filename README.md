@@ -63,12 +63,46 @@ pip install -r requirements.txt
 
 ### CLI driver
 
+1. Install dependencies for your chosen variant:
+```bash
+   pip install -r requirements.txt
+```
+2. Connect the XY-MD02 sensor via RS485 (USB-to-RS485 converter).
+3. Open the driver script (e.g. `xymd02_driver_pymodbus.py`) and set the
+   serial port to match your system:
+   - Windows: `"COM16"` (check Device Manager)
+   - Linux: `"/dev/ttyUSB0"` (or `/dev/ttyUSB0`, check with `ls /dev/tty*` after plugging in)
+4. Run the script:
+```bash
+   python xymd02_driver_pymodbus.py
+```
+5. It will give CLI prompts to read temperature/humidity in a loop or modify sensor parameters (address, baud rate, correction offset).
+
+For a reading without the loop/parameter options, use the
+`simple_xymd02_driver_*.py` script instead.
+
 ### Desktop GUI
 
-### Autonomous Service
+1. Install dependencies (includes PySide6):
+```bash
+   pip install -r requirements.txt
+```
+2. Connect the XY-MD02 sensor via RS485.
+3. Run the GUI:
+```bash
+   python driver_gui/main.py
+```
+   
+4. In the interface, set your connection parameters (port, baud rate,
+   slave address) and click **Connect**.
+5. Once connected, live temperature/humidity readings are displayed and
+   plotted on a graph. Sensor parameters can also be modified from the GUI.
+
+<!-- ![Desktop GUI screenshot](screenshot-placeholder.png) -->
 
 
+### Auto-run Service
+ - Work in progress
 <!-- ## Notes / Known limitations
-
 - `service/` is still work in progress
 - The basic terminal driver requires you to open the python files to modify the parameters -->
